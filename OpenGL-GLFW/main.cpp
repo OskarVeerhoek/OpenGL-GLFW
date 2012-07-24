@@ -17,13 +17,23 @@ int WindowCloseCallback()
 
 int main(void)
 {
+	// >> glfwInit initializes GLFW. No other function of GLFW may be called before 
+	// >> it has been invoked. If glfwInit returns GL_FALSE if it has failed. 
 	if (glfwInit() == GL_FALSE)
-		glfwTerminate();
+		// Quit the program if glfwInit fails.
+		return EXIT_FAILURE;
+	// >> glfwOpenWindowHint sets additional properties for a window that is to be opened. 
+	// >> Calls to glfwOpenWindowHint after glfwOpenWindow will be discarded.
+	// Set the OpenGL version to 3.2. 
 	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
 	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
+	// Set forward compatibility to true. This step is necessary for Mac OS Lion.
 	glfwOpenWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	// Enable the OpenGL core profile. This step is necessary for Mac OS Lion, too.
 	glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	// Make the window unresizable.
 	glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
+	// >> 
 	if (glfwOpenWindow(640, 480, 8, 8, 8, 8, 24, 8, GLFW_WINDOW) == GL_FALSE)
 		glfwTerminate();
 	glfwSwapInterval(1);
