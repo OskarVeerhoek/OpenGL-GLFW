@@ -84,13 +84,13 @@
 #include "tcu/program.hpp"
 
 // Creates an instance of tcu::program::Program, the class containing our OpenGL code
-tcu::program::Program program;
+program::Program g_program;
 
 // A method which is executed after the user presses the exit button on the window
 int GLFWCALL WindowCloseCallback()
 {
 	// Clean up the resources (OpenGL Code)
-	program.Destroy();
+	g_program.Destroy();
 	// Allow the user to get rid of the window
 	return GL_TRUE;
 }
@@ -152,18 +152,18 @@ int main(void)
 	// been closed - cleaned up.
 	bool running = true;
 	// Initialize the OpenGL code.
-	program.Init();
+	g_program.Init();
 	while (running)
 	{
 		// Render graphics to the display
-		program.Render();
+		g_program.Render();
 		// Updates the screen (with double buffering)
 		glfwSwapBuffers();
 		// If we press escape and if the window has not been closed, keep running.
 		running = !glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED);
 	}
 	// Clean up the OpenGL code.
-	program.Destroy();
+	g_program.Destroy();
 	// >> glfwCloseWindow closes the OpenGL window
 	glfwCloseWindow();
 	// Quit the program.
