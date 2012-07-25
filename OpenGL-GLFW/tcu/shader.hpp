@@ -18,8 +18,7 @@ namespace tcu
 			std::map<std::string, GLuint> _vertex_attributes;
 			std::map<std::string, GLuint> _uniforms;
 		};
-		//const GLuint CreateShaderFromFile(const std::string file_name, const GLenum shader_type);
-		//const GLuint CreateShaderProgram(const GLuint vertex_shader, const GLuint fragment_shader);
+		// >> CreateProgramFromFile constructs a shader program from the two specified files for the vertex shader and the fragment shader respectively.
 		const Program CreateProgramFromFiles(const std::string vertex_shader_file_name, const std::string fragment_shader_file_name, const std::string geometry_shader_file_name = "NULL");
 		const void AddVertexAttributeToProgram(Program &program, const std::string attribute);
 		const void AddUniformToProgram(Program &program, const std::string uniform);
