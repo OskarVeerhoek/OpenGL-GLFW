@@ -1,11 +1,12 @@
 #include "program.hpp"
-
 // Core OpenGL Functions.
 #include <GL/glew.h>
 // Console Input and Output.
 #include <iostream>
 // OpenGL Error Handling 
 #include "error.hpp" // *
+// Texture Loading
+#include <SOIL.h>
 
 namespace tcu
 {
@@ -44,19 +45,19 @@ namespace tcu
 			// >> vertex data. (http://www.opengl.org/wiki/Vertex_Array_Object)
 			// >> glGenVertexArrays returns n vertex array object names in arrays.
 			// Create one VAO and store it in GLuint vao. 
-			glGenVertexArrays(1, &vao);
+			glGenVertexArrays(1, &m_vao);
 			// >> glBindVertexArray binds the vertex array object with name array.
 			// Bind the aforementioned VAO to OpenGL.
-			glBindVertexArray(vao);
+			glBindVertexArray(m_vao);
 			// >> glGenBuffers returns n buffer object names in buffers.
 			// >> No buffer objects are associated with the returned buffer object names
 			// >> until they are first bound by calling glBindBuffer.
-			glGenBuffers(1, &vbo);
+			glGenBuffers(1, &m_vbo);
 			// >> glBindBuffer binds a buffer object to the specified buffer binding point. 
 			// >> Vertex Buffer Objects (VBOs) are Buffer Objects that are used for
 			// >> vertex data. (VBO = GL_ARRAY_BUFFER)
 			// Bind our buffer object to GL_ARRAY_BUFFER, thus making it a VBO.
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 			// >> glBufferData creates a new data store for the buffer object currently bound
 			// >> to target. Any pre-existing data store is deleted. The new data store is created 
 			// >> with the specified size in bytes and usage. If data is not NULL, the data 
@@ -86,9 +87,11 @@ namespace tcu
 			// Tell OpenGL where to find the vertex colour data (inside the VBO).
 			glVertexAttribPointer(VERTEX_COLOUR, 4, GL_FLOAT, GL_FALSE, 0, (void*) 48);
 			// Create a new shader program from the two files containing a vertex shader and a fragment shader.
-			shader_program = tcu::shader::CreateProgramFromFiles("shader.vert", "shader.frag"); // *
+			m_shader_program.CreateFromFiles("shader.vert", "shader.frag");
 			// Binds the shader program to OpenGL.
-			tcu::shader::UseProgram(shader_program); // *
+			glUseProgram(m_shader_program.GetOpenGLID());
+			// Load a texture.
+			m_texture = SOIL_load_OGL_texture("background.bmp", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 			// Check for OpenGL errors. 
 			tcu::error::CheckErrors(true, "Initialization: "); // *
 		}
@@ -107,12 +110,12 @@ namespace tcu
 			// >> glDeleteVertexArrays deletes n vertex array objects whose names are stored in the array
 			// >> addressed by arrays.
 			// Delete the VAO.
-			glDeleteVertexArrays(1, &vao);
+			glDeleteVertexArrays(1, &m_vao);
 			// >> glDeleteBuffers deletes n buffer objects named by the elements of the array buffers. 
 			// Delete the VBO.
-			glDeleteBuffers(1, &vbo);
+			glDeleteBuffers(1, &m_vbo);
 			// Destroy the shader program.
-			tcu::shader::DestroyProgram(shader_program); // *
+			m_shader_program.Destroy();
 			// Check for OpenGL errors.
 			tcu::error::CheckErrors(true, "Destroying: "); // *
 		}

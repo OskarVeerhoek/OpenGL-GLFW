@@ -1,6 +1,5 @@
 #include "shader.hpp"
 #include <GL/glew.h>
-#include <string>
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -64,68 +63,29 @@ namespace tcu
 			}
 			return program;
 		}
-		const Program CreateProgramFromFiles(const std::string vertex_shader_file_name, const std::string fragment_shader_file_name, const std::string geometry_shader_file_name)
+		void ShaderProgram::CreateFromFiles(const std::string vertex_shader_file_name, const std::string fragment_shader_file_name)
 		{
-			Program program;
-			program._vertex_shader = CreateShaderFromFile(vertex_shader_file_name, GL_VERTEX_SHADER);
-			program._fragment_shader = CreateShaderFromFile(fragment_shader_file_name, GL_FRAGMENT_SHADER);
-			if ("NULL" != geometry_shader_file_name)
-			{
-				program._geometry_shader = CreateShaderFromFile(geometry_shader_file_name, GL_GEOMETRY_SHADER);
-				program._shader_program = CreateShaderProgram(program._vertex_shader, program._fragment_shader, program._geometry_shader);
-				program._use_geometry_shader = true;
-				return program;
-			}
-			else
-			{
-				program._shader_program = CreateShaderProgram(program._vertex_shader, program._fragment_shader);
-				program._use_geometry_shader = false;
-				return program;
-			}
+			m_opengl_vertex_shader = CreateShaderFromFile(vertex_shader_file_name, GL_VERTEX_SHADER);
+			m_opengl_fragment_shader = CreateShaderFromFile(fragment_shader_file_name, GL_FRAGMENT_SHADER);
+			m_opengl_shader_program = CreateShaderProgram(m_opengl_vertex_shader, m_opengl_fragment_shader);
 		}
-		const void DestroyProgram(const Program program)
+		void ShaderProgram::Destroy()
 		{
-			glDeleteProgram(program._shader_program);
-			glDeleteShader(program._vertex_shader);
-			glDeleteShader(program._fragment_shader);
-			if (true == program._use_geometry_shader)
-				glDeleteShader(program._geometry_shader);
+			glDeleteProgram(m_opengl_shader_program);
+			glDeleteShader(m_opengl_vertex_shader);
+			glDeleteShader(m_opengl_fragment_shader);
 		}
-		const void UseProgram(Program program)
+		ShaderProgram::~ShaderProgram()
 		{
-			glUseProgram(program._shader_program);
+			Destroy();
 		}
-		const void AddVertexAttributeToProgram(Program &program, std::string attribute)
+		ShaderProgram::ShaderProgram()
 		{
-			program._vertex_attributes[attribute] = glGetAttribLocation(program._shader_program, attribute.c_str());
+
 		}
-		const void AddUniformToProgram(Program &program, std::string uniform)
+		GLuint ShaderProgram::GetOpenGLID()
 		{
-			program._uniforms[uniform] = glGetUniformLocation(program._shader_program, uniform.c_str());
-		}
-		const GLuint GetVertexAttribute(const Program program, std::string attribute)
-		{
-			if (program._vertex_attributes.find(attribute) == program._vertex_attributes.end())
-			{
-				std::cout << "Map does not contain value." << std::endl;
-				return 0;
-			}
-			else
-			{
-				return program._vertex_attributes.find(attribute)->second;
-			}
-		}
-		const GLuint GetUniform(const Program program, std::string uniform)
-		{
-			if (program._uniforms.find(uniform) == program._uniforms.end())
-			{
-				std::cout << "Map does not contain value." << std::endl;
-				return 0;
-			}
-			else
-			{
-				return program._uniforms.find(uniform)->second;
-			}
+			return m_opengl_shader_program;
 		}
 	}
 }

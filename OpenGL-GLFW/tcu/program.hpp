@@ -22,11 +22,13 @@ namespace tcu
 			void Destroy();
 		private:
 			// The OpenGL shader program.
-			tcu::shader::Program shader_program; // *
+			tcu::shader::ShaderProgram m_shader_program; // *
 			// The OpenGL VAO (Vertex Array Object).
-			GLuint vao;
+			GLuint m_vao;
 			// The OpenGL VBO (Vertex Buffer Object).
-			GLuint vbo;
+			GLuint m_vbo;
+			// An OpenGL Texture
+			GLuint m_texture;
 		};
 	}
 }
