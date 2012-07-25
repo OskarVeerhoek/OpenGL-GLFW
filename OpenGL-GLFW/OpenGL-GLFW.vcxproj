@@ -37,15 +37,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\SOIL\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Program Files %28x86%29\SOIL\lib;C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\SOIL\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\SOIL\lib;C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -54,7 +54,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw.lib;libSOIL.a;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions> /NODEFAULTLIB:"MSVCRT" %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -69,7 +69,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw.lib;libSOIL.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
