@@ -11,7 +11,7 @@ namespace program
 	public:
 		// Constructs an instance of Program. Does nothing else.
 		Program();
-		// Destructs the intsnace in question of Program. Calls Destroy.
+		// Destructs the intsnace in question of Program. 
 		~Program();
 		// Initializes the Program. Sets up rendering code.
 		void Init();

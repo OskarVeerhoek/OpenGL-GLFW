@@ -48,14 +48,13 @@ namespace program
 	{
 		// Does nothing but construct the object.
 	}
-
 	Program::~Program()
 	{
-		Destroy();
+		// Does nothing but destruct the object.
 	}
 	void Program::Init()
 	{
-		std::cout << glGetString(GL_EXTENSIONS) << std::endl;
+		error::Initialize();
 		// >> Vertex Array Objects (VAO) are OpenGL Objects that store the 
 		// >> set of bindings between Vertex Attributes and the user's source 
 		// >> vertex data. (http://www.opengl.org/wiki/Vertex_Array_Object)
@@ -120,7 +119,7 @@ namespace program
 		glBindTexture(GL_TEXTURE_2D, m_texture);
 		glUniform1i(glGetUniformLocation(m_shader_program.GetOpenGLID(), "texture"), 0);
 		// Check for OpenGL errors. 
-		error::CheckErrors(true, "Initialization: "); // *
+		error::CheckErrors(false, "Initialization: "); // *
 	}
 	void Program::Render()
 	{
@@ -154,7 +153,8 @@ namespace program
 		// Unload the texture.
 		glDeleteTextures(1, &m_texture);
 		// Check for OpenGL errors.
-		error::CheckErrors(true, "Destroying: "); // *
+		error::CheckErrors(false, "Destroying: "); // *
+		error::Destroy();
 	}
 }		
 
