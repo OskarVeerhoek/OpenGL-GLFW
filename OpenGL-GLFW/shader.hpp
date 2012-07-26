@@ -1,6 +1,6 @@
 #ifndef OPENGL_GLFW_TCU_SHADER_H_
 #define OPENGL_GLFW_TCU_SHADER_H_
-#include <string>
+#include "standard.h"
 typedef unsigned int GLuint;
 typedef unsigned int GLenum;
 
