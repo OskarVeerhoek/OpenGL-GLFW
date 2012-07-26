@@ -132,8 +132,6 @@ namespace program
 		glBindVertexArray(0);
 		// Unbind the shader program.
 		glUseProgram(0);
-		// Unbind the texture.
-		glBindTexture(GL_TEXTURE_2D, 0);
 		// >> glDeleteVertexArrays deletes n vertex array objects whose names are stored in the array
 		// >> addressed by arrays.
 		// Delete the VAO.
