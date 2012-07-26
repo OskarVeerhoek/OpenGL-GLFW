@@ -22,10 +22,12 @@ namespace program
 	private:
 		// The OpenGL shader program.
 		shader::ShaderProgram m_shader_program; // *
-		// The OpenGL VAO (Vertex Array Object).
+		// The OpenGL VAO (Vertex Array Object)
 		GLuint m_vao;
-		// The OpenGL VBO (Vertex Buffer Object).
+		// The OpenGL VBO (Vertex Buffer Object)
 		GLuint m_vbo;
+		// The OpenGL IBO (Index Buffer Object)
+		GLuint m_ibo;
 		// An OpenGL Texture
 		GLuint m_texture;
 	};
