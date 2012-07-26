@@ -44,8 +44,8 @@
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\SOIL\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\SOIL\lib;C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -73,14 +73,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="error.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="tcu\program.cpp" />
-    <ClCompile Include="tcu\shader.cpp" />
+    <ClCompile Include="program.cpp" />
+    <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tcu\error.hpp" />
-    <ClInclude Include="tcu\program.hpp" />
-    <ClInclude Include="tcu\shader.hpp" />
+    <ClInclude Include="error.hpp" />
+    <ClInclude Include="opengl.h" />
+    <ClInclude Include="program.hpp" />
+    <ClInclude Include="shader.hpp" />
+    <ClInclude Include="standard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

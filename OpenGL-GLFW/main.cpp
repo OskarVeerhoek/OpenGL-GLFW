@@ -74,14 +74,10 @@
 
 // ">>" indicates a snippet of the documentation of the library in question
 
-// Console Input And Output
-#include <iostream>
-// Core OpenGL Functions
-#include <GL/glew.h>
-// OpenGL Window 
+#include "opengl.h"
+#include "standard.h"
+#include "program.hpp"
 #include <GL/glfw.h>
-// OpenGL Code (stays the same whether we use GLFW or another library)
-#include "tcu/program.hpp"
 
 // Creates an instance of tcu::program::Program, the class containing our OpenGL code
 program::Program g_program;
@@ -132,17 +128,9 @@ int main(void)
 	glfwSwapInterval(1);
 	// Intitialize GLEW so we can use modern OpenGL functions.
 	GLenum err = glewInit();
-	// GLEW has this bug where it sets an INVALID_ENUM OpenGL error after
-	// glewInit has been called. We'll discard this and reset the error 
-	// flag by calling glGetError.
-	glGetError(); // Reset Error Flag
-	if (err != GLEW_OK)
+	if (GLEW_OK != err)
 	{
-		// Print out the GLEW error if it exists.
-		std::cout << glewGetErrorString(err) << std::endl;
-		std::cin.get();
-		// Quit the program.
-		return EXIT_FAILURE;
+		std::cout << "GLEW failed." << std::endl;
 	}
 	// >> glfwSetWindowCloseCallback selects which function should be called
 	// >> upon on a window close event. The function should have the following 

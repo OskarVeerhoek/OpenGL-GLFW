@@ -1,9 +1,5 @@
 #include "program.hpp"
-// Core OpenGL Functions.
-#include <GL/glew.h>
-// Console Input and Output.
-#include <iostream>
-// OpenGL Error Handling 
+#include "opengl.h"
 #include "error.hpp" // *
 
 namespace program

@@ -1,10 +1,6 @@
 #include "shader.hpp"
-#include <GL/glew.h>
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <map>
-
+#include "opengl.h"
+#include "standard.h"
 
 namespace shader
 {

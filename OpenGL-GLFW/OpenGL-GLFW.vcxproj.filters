@@ -18,22 +18,31 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tcu\shader.cpp">
+    <ClCompile Include="error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tcu\program.cpp">
+    <ClCompile Include="program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tcu\shader.hpp">
+    <ClInclude Include="error.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="tcu\program.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="program.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tcu\error.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="shader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="standard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="opengl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
