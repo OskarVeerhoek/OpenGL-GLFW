@@ -29,6 +29,8 @@ namespace program
 		GLuint m_vbo;
 		// The OpenGL IBO (Index Buffer Object)
 		GLuint m_ibo;
+		GLuint m_brightness_uniform_location;
+		float m_brightness;
 		// The OpenGL error handler.
 		error::ErrorHandler m_error_handler; // *
 	};

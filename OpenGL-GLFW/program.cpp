@@ -104,13 +104,16 @@ namespace program
 		glVertexAttribPointer(VERTEX_COLOUR, 3, GL_FLOAT, GL_FALSE, 0, (void*) 32);
 		// Create a new shader program from the two files containing a vertex shader and a fragment shader.
 		m_shader_program.CreateFromFiles("shader.vert", "shader.frag");
+		m_brightness_uniform_location = glGetUniformLocation(m_shader_program.GetOpenGLID(), "brightness");
 		// Binds the shader program to OpenGL.
 		glUseProgram(m_shader_program.GetOpenGLID());
+		m_brightness = 0.3f;
 		// Check for OpenGL errors. 
 		m_error_handler.Check(true, "Initialization Code: ");
 	}
 	void Program::Render()
 	{
+		glUniform1f(m_brightness_uniform_location, m_brightness);
 		// >> glClear sets the bitplane area of the window to values previously selected by glClearColor.
 		// Clear the window of its contents.
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -121,6 +124,15 @@ namespace program
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 		// Check for OpenGl errors.
 		m_error_handler.Check(false, "Update Code: ");
+		// Input
+		if (glfwGetKey('A') == GLFW_PRESS)
+		{
+			m_brightness -= 0.01f;
+		}
+		if (glfwGetKey('D') == GLFW_PRESS)
+		{
+			m_brightness += 0.01f;
+		}
 	}
 	void Program::Destroy()
 	{

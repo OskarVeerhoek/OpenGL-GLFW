@@ -13,6 +13,7 @@ namespace error
 	}
 	void ErrorHandler::Create()
 	{
+		glGetError();
 		m_stream.open("debug.txt"); 
 	}
 	void ErrorHandler::Destroy()
