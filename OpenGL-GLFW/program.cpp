@@ -111,7 +111,7 @@ namespace program
 		// Check for OpenGL errors. 
 		m_error_handler.Check(true, "Initialization Code: ");
 	}
-	void Program::Render()
+	void Program::Update(double passed_time)
 	{
 		glUniform1f(m_brightness_uniform_location, m_brightness);
 		// >> glClear sets the bitplane area of the window to values previously selected by glClearColor.
@@ -125,13 +125,14 @@ namespace program
 		// Check for OpenGl errors.
 		m_error_handler.Check(false, "Update Code: ");
 		// Input
+		std::cout << (passed_time) << std::endl;
 		if (glfwGetKey('A') == GLFW_PRESS)
 		{
-			m_brightness -= 0.01f;
+			m_brightness -= 1.0f * passed_time;
 		}
 		if (glfwGetKey('D') == GLFW_PRESS)
 		{
-			m_brightness += 0.01f;
+			m_brightness += 1.0f * passed_time;
 		}
 	}
 	void Program::Destroy()

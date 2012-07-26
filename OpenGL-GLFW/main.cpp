@@ -142,10 +142,12 @@ int main(void)
 	bool running = true;
 	// Initialize the OpenGL code.
 	g_program.Init();
+	double last_time = glfwGetTime();
 	while (running)
 	{
 		// Render graphics to the display
-		g_program.Render();
+		g_program.Update(glfwGetTime() - last_time);
+		last_time = glfwGetTime();
 		// Updates the screen (with double buffering)
 		glfwSwapBuffers();
 		// If we press escape and if the window has not been closed, keep running.

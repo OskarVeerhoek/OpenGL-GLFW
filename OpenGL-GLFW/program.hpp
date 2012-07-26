@@ -17,7 +17,7 @@ namespace program
 		// Initializes the Program. Sets up rendering code.
 		void Init();
 		// Renders to the screen.
-		void Render();
+		void Update(double passed_time);
 		// Destroys the Program. Cleans up resources.
 		void Destroy();
 	private:
