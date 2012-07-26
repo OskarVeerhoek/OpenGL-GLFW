@@ -74,7 +74,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="tcu\error.cpp" />
     <ClCompile Include="tcu\program.cpp" />
     <ClCompile Include="tcu\shader.cpp" />
   </ItemGroup>
