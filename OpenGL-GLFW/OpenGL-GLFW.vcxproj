@@ -37,15 +37,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\GL3W\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)</TargetName>
+    <SourcePath>C:\Program Files %28x86%29\GL3W\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\SOIL\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\SOIL\lib;C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\GL3W\include;C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>C:\Program Files %28x86%29\GL3W\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
