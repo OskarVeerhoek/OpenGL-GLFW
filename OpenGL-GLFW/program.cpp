@@ -125,7 +125,6 @@ namespace program
 		// Check for OpenGl errors.
 		m_error_handler.Check(false, "Update Code: ");
 		// Input
-		std::cout << (passed_time) << std::endl;
 		if (glfwGetKey('A') == GLFW_PRESS)
 		{
 			m_brightness -= 1.0f * passed_time;
