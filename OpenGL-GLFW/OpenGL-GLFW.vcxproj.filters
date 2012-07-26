@@ -24,9 +24,6 @@
     <ClCompile Include="tcu\program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tcu\error.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tcu\shader.hpp">
