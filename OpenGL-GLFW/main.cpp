@@ -77,7 +77,6 @@
 #include "opengl.h"
 #include "standard.h"
 #include "program.hpp"
-#include <GL/glfw.h>
 
 // Creates an instance of tcu::program::Program, the class containing our OpenGL code
 program::Program g_program;
