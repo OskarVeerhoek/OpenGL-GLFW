@@ -2,6 +2,7 @@
 #define OPENGL_GLFW_TCU_PROGRAM_H_
 // Include the tcu::shader contents.
 #include "shader.hpp"
+#include "error.hpp"
 
 namespace program
 {
@@ -28,6 +29,8 @@ namespace program
 		GLuint m_vbo;
 		// The OpenGL IBO (Index Buffer Object)
 		GLuint m_ibo;
+		// The OpenGL error handler.
+		error::ErrorHandler m_error_handler; // *
 	};
 }
 

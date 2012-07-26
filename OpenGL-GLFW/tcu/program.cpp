@@ -55,7 +55,7 @@ namespace program
 	}
 	void Program::Init()
 	{
-		error::Initialize();
+		m_error_handler.Create();
 		// >> Vertex Array Objects (VAO) are OpenGL Objects that store the 
 		// >> set of bindings between Vertex Attributes and the user's source 
 		// >> vertex data. (http://www.opengl.org/wiki/Vertex_Array_Object)
@@ -111,7 +111,7 @@ namespace program
 		// Binds the shader program to OpenGL.
 		glUseProgram(m_shader_program.GetOpenGLID());
 		// Check for OpenGL errors. 
-		error::CheckErrors(false, "Initialization: "); // *
+		m_error_handler.Check(true, "Initialization Code: ");
 	}
 	void Program::Render()
 	{
@@ -122,10 +122,9 @@ namespace program
 		// >> When glDrawElements is called, it uses count sequential elements from an enabled array, starting at 
 		// >> indices to construct a sequence of geometric primitives. mode specifies what kind of primitives are
 		// >> constructed and how the array elements construct these primitives
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*) 0);
-		//glDrawRangeElements(GL_TRIANGLES, 0, 6, 6, GL_UNSIGNED_SHORT, NULL);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 		// Check for OpenGl errors.
-		error::CheckErrors(false, "Render: ");	// *
+		m_error_handler.Check(false, "Update Code: ");
 	}
 	void Program::Destroy()
 	{
@@ -149,8 +148,8 @@ namespace program
 		// Destroy the shader program.
 		m_shader_program.Destroy();
 		// Check for OpenGL errors.
-		error::CheckErrors(false, "Destroying: "); // *
-		error::Destroy();
+		m_error_handler.Check(true, "Clean Up Code: ");
+		m_error_handler.Destroy();
 	}
 }		
 
