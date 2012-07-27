@@ -125,12 +125,8 @@ int main(void)
 		glfwTerminate();
 	// Enable Vsync (improves visual quality, caps frame-rate to 60fps).
 	glfwSwapInterval(1);
-	// Intitialize GLEW so we can use modern OpenGL functions.
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		std::cout << "GLEW failed." << std::endl;
-	}
+	// Intitialize GL3W for Core OpenGL functions.
+	gl3wInit();
 	// >> glfwSetWindowCloseCallback selects which function should be called
 	// >> upon on a window close event. The function should have the following 
 	// >> prototype:

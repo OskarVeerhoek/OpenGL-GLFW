@@ -37,11 +37,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\GL3W\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Program Files %28x86%29\GLEW\lib;C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Program Files (x86)\GLFW\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)</TargetName>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>C:\Program Files %28x86%29\GLEW\include;C:\Program Files %28x86%29\GLFW\include;C:\Program Files %28x86%29\GLM;C:\Program Files (x86)\GLFW\include;$(IncludePath)</IncludePath>
@@ -54,7 +55,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions> /NODEFAULTLIB:"MSVCRT" %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -73,6 +74,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\..\Program Files (x86)\GL3W\src\gl3w.c" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="program.cpp" />

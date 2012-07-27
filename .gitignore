@@ -1,3 +1,4 @@
+#################
 ## Eclipse
 #################
 
@@ -163,3 +164,9 @@ pip-log.txt
 
 #Custom
 OpenGL-GLFW/debug.txt
+*.obj
+*.tlog
+*.log
+*.exe
+*.ilk
+*.pdb
